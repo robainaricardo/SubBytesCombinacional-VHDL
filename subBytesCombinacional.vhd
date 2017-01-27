@@ -1,31 +1,35 @@
+--bibliotecas do pacote (tipos)
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+--pacote com tipos utilizados
 package tipos is
   subtype ByteInt is std_logic_vector(0 to 7);
   type ByteArray is array (0 to 255) of ByteInt;
   type Bloco is array(0 to 15) of ByteInt;
 end package tipos;
 
+--bibliotecas d componente
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-
-use work.tipos.all;
+use work.tipos.all; -- usa o pakege criado
 
 entity subBytesCombinacional is
   
 	port(
-	  bloco_in  : in Bloco;
-    bloco_out : out Bloco
+	  bloco_in  : in Bloco; -- bloco de entrada (a ser cifrado)
+    bloco_out : out Bloco -- bloco de saida (ja cifrado)
 	);
 
 end entity;
 
 architecture behavior of subBytesCombinacional is
-
+  
+  --Tabela SBOX em binário
   constant SBOX : ByteArray := (
+  ---     0          1          2         3           4         5         6           7           8         9          A           B          C          D          E          F        
     "01100011","01111100","01110111","01111011","11110010","01101011","01101111","11000101","00110000","00000001","01100111","00101011","11111110","11010111","10101011","01110110",
     "11001010","10000010","11001001","01111101","11111010","01011001","01000111","11110000","10101101","11010100","10100010","10101111","10011100","10100100","01110010","11000000",
     "10110111","11111101","10010011","00100110","00110110","00111111","11110111","11001100","00110100","10100101","11100101","11110001","01110001","11011000","00110001","00010101",
@@ -43,31 +47,43 @@ architecture behavior of subBytesCombinacional is
     "11100001","11111000","10011000","00010001","01101001","11011001","10001110","10010100","10011011","00011110","10000111","11101001","11001110","01010101","00101000","11011111",
     "10001100","10100001","10001001","00001101","10111111","11100110","01000010","01101000","01000001","10011001","00101101","00001111","10110000","01010100","10111011","00010110");
 
-    
-    
-  signal blocoIN : Bloco;
-  signal blocoOUT : Bloco;
-  signal end_a : std_logic_vector(0 to 3);
-  signal end_b : std_logic_vector(0 to 3);
-  signal b : std_logic_vector(0 to 7);
-  signal cte : unsigned(0 to 4):= "10000";
+--declaração dos sinais
+  signal blocoIN : Bloco;     --sinal do bloco de entrada
+  signal blocoOUT : Bloco;    --sinal do bloco de saida
+  signal cte : unsigned(0 to 4):= "10000";  --sinal CONSTANTE valor 16, numero de colunas da tabela
+                                          --utilizado para calcular o endereco do array durante a operacao
 
 begin
-  
-  blocoIN(0) <= "11111111";
 
- --end_a <= blocoIN(0)(0 to 3);
- --end_b <= blocoIN(0)(4 to 7);
- --ende <= unsigned(unsigned(end_a) + unsigned(end_b));
- 
-  --end_a(0) <= b(0);
-  --- saida[X] <= SBOX((16*To_Integer.X[0 to 3]) + To_Integer.X[4 to 7])
-  ---FUNCIONANDO!!!!
-  --Colocar o CLOCK E RESET E TA SHOWWW!
-  blocoOUT(0) <= SBOX(to_integer( (cte * unsigned(blocoIN(0)(0 to 3)) ) + unsigned(blocoIN(0)(4 to 7)) ));
-  --std_logic_vector(unsigned(Ae3) + unsigned(Be3));
-  --blocoOUT(0) <= SBOX(0);
+  --bloco para teste(Antes do TESTEBANCH)
+  --blocoIN <= ("01100000","10000001","01001111","11011100",
+    --          "00100010","00101010","10010000","10001000",
+      --        "01000110","11101110","10111000","00010100",
+        --      "11011110","01011110","00001011","11011011");
   
+  --Atribui a entrada ao sinal 
+  blocoIN <= bloco_in;
+  
+  --processo combinacional que efetua a operacao de SUBBYTES do algoritmo AES
+  --- saida[X] <= SBOX((16*To_Integer.X[0 to 3]) + To_Integer.X[4 to 7])
+  blocoOUT(0) <= SBOX(to_integer( (cte * unsigned(blocoIN(0)(0 to 3)) ) + unsigned(blocoIN(0)(4 to 7)) ));
+  blocoOUT(1) <= SBOX(to_integer( (cte * unsigned(blocoIN(1)(0 to 3)) ) + unsigned(blocoIN(1)(4 to 7)) ));  
+  blocoOUT(2) <= SBOX(to_integer( (cte * unsigned(blocoIN(2)(0 to 3)) ) + unsigned(blocoIN(2)(4 to 7)) ));
+  blocoOUT(3) <= SBOX(to_integer( (cte * unsigned(blocoIN(3)(0 to 3)) ) + unsigned(blocoIN(3)(4 to 7)) ));
+  blocoOUT(4) <= SBOX(to_integer( (cte * unsigned(blocoIN(4)(0 to 3)) ) + unsigned(blocoIN(4)(4 to 7)) ));
+  blocoOUT(5) <= SBOX(to_integer( (cte * unsigned(blocoIN(5)(0 to 3)) ) + unsigned(blocoIN(5)(4 to 7)) ));
+  blocoOUT(6) <= SBOX(to_integer( (cte * unsigned(blocoIN(6)(0 to 3)) ) + unsigned(blocoIN(6)(4 to 7)) ));
+  blocoOUT(7) <= SBOX(to_integer( (cte * unsigned(blocoIN(7)(0 to 3)) ) + unsigned(blocoIN(7)(4 to 7)) ));
+  blocoOUT(8) <= SBOX(to_integer( (cte * unsigned(blocoIN(8)(0 to 3)) ) + unsigned(blocoIN(8)(4 to 7)) ));
+  blocoOUT(9) <= SBOX(to_integer( (cte * unsigned(blocoIN(9)(0 to 3)) ) + unsigned(blocoIN(9)(4 to 7)) ));
+  blocoOUT(10) <= SBOX(to_integer( (cte * unsigned(blocoIN(10)(0 to 3)) ) + unsigned(blocoIN(10)(4 to 7)) ));
+  blocoOUT(11) <= SBOX(to_integer( (cte * unsigned(blocoIN(11)(0 to 3)) ) + unsigned(blocoIN(11)(4 to 7)) ));
+  blocoOUT(12) <= SBOX(to_integer( (cte * unsigned(blocoIN(12)(0 to 3)) ) + unsigned(blocoIN(12)(4 to 7)) ));
+  blocoOUT(13) <= SBOX(to_integer( (cte * unsigned(blocoIN(13)(0 to 3)) ) + unsigned(blocoIN(13)(4 to 7)) ));
+  blocoOUT(14) <= SBOX(to_integer( (cte * unsigned(blocoIN(14)(0 to 3)) ) + unsigned(blocoIN(14)(4 to 7)) ));
+  blocoOUT(15) <= SBOX(to_integer( (cte * unsigned(blocoIN(15)(0 to 3)) ) + unsigned(blocoIN(15)(4 to 7)) ));
+  
+  --Atribui o sinal com o resultado a saida
   bloco_out <= blocoOUT;
   
 end behavior;
