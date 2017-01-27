@@ -1,7 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use ieee.std_logic_unsigned.all;
 
 package tipos is
   subtype ByteInt is std_logic_vector(0 to 7);
@@ -12,10 +11,6 @@ end package tipos;
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use ieee.std_logic_unsigned.all;
-use IEEE.std_logic_arith.all;
-use IEEE.std_logic_signed.all;
-use ieee.std_logic_1164.STD_LOGIC_VECTOR;
 
 use work.tipos.all;
 
@@ -54,15 +49,21 @@ architecture behavior of subBytesCombinacional is
   signal end_a : std_logic_vector(0 to 3);
   signal end_b : std_logic_vector(0 to 3);
   signal b : std_logic_vector(0 to 7);
-  signal inteiro : integer range 0 to 255;
+  signal ende : unsigned(0 to 3);
 
 begin
   
-  
+  blocoIN(0) <= "01000010";
+
+ --end_a <= blocoIN(0)(0 to 3);
+ --end_b <= blocoIN(0)(4 to 7);
+ --ende <= unsigned(unsigned(end_a) + unsigned(end_b));
  
   --end_a(0) <= b(0);
   --- saida[X] <= SBOX((16*To_Integer.X[0 to 3]) + To_Integer.X[4 to 7])
-  blocoOUT(0) <= SBOX((16*(2)) + 3);
+  blocoOUT(0) <= SBOX(to_integer( ( 16 * unsigned(blocoIN(0)(0 to 3))) + unsigned(blocoIN(0)(4 to 7)) ));
+  --std_logic_vector(unsigned(Ae3) + unsigned(Be3));
+  --blocoOUT(0) <= SBOX(0);
   
   bloco_out <= blocoOUT;
   
