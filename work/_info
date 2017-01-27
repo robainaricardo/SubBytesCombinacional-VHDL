@@ -4,7 +4,7 @@ K3
 cModel Technology
 dC:\designes\memoriaRam
 Esubbytescombinacional
-Z0 w1485546483
+Z0 w1485548390
 Z1 DPx4 work 5 tipos 0 22 KF_VO:mMH5QVcB5dP?cJ>1
 Z2 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
 Z3 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
@@ -19,7 +19,7 @@ VUZ_Adb762CA0cI71[71>Q1
 Z8 OV;C;10.1d;51
 32
 !i10b 1
-Z9 !s108 1485546485.030000
+Z9 !s108 1485548394.250000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacional.vhd|
 Z11 !s107 C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacional.vhd|
 Z12 o-work work -2002 -explicit -O0
@@ -30,10 +30,10 @@ R2
 R3
 R4
 Z14 DEx4 work 21 subbytescombinacional 0 22 UZ_Adb762CA0cI71[71>Q1
-l54
+l55
 L26
-V@hb7XNhX5TY=SkD1FK42H2
-!s100 lSe6e31I5b0dW`m<nA<173
+Z15 VWM@<`FA[jQzU87`[D270B2
+Z16 !s100 ?A4zQSIX05foDm9K:`OeS2
 R8
 32
 !i10b 1
@@ -46,7 +46,7 @@ Ptipos
 R2
 R3
 R4
-Z15 w1485546483
+Z17 w1485548390
 R5
 R6
 R7

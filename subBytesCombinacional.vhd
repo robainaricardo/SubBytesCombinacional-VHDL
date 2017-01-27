@@ -44,16 +44,17 @@ architecture behavior of subBytesCombinacional is
     "10001100","10100001","10001001","00001101","10111111","11100110","01000010","01101000","01000001","10011001","00101101","00001111","10110000","01010100","10111011","00010110");
 
     
+    
   signal blocoIN : Bloco;
   signal blocoOUT : Bloco;
   signal end_a : std_logic_vector(0 to 3);
   signal end_b : std_logic_vector(0 to 3);
   signal b : std_logic_vector(0 to 7);
-  signal ende : unsigned(0 to 3);
+  signal cte : unsigned(0 to 4):= "10000";
 
 begin
   
-  blocoIN(0) <= "01000010";
+  blocoIN(0) <= "11111111";
 
  --end_a <= blocoIN(0)(0 to 3);
  --end_b <= blocoIN(0)(4 to 7);
@@ -61,7 +62,9 @@ begin
  
   --end_a(0) <= b(0);
   --- saida[X] <= SBOX((16*To_Integer.X[0 to 3]) + To_Integer.X[4 to 7])
-  blocoOUT(0) <= SBOX(to_integer( ( 16 * unsigned(blocoIN(0)(0 to 3))) + unsigned(blocoIN(0)(4 to 7)) ));
+  ---FUNCIONANDO!!!!
+  --Colocar o CLOCK E RESET E TA SHOWWW!
+  blocoOUT(0) <= SBOX(to_integer( (cte * unsigned(blocoIN(0)(0 to 3)) ) + unsigned(blocoIN(0)(4 to 7)) ));
   --std_logic_vector(unsigned(Ae3) + unsigned(Be3));
   --blocoOUT(0) <= SBOX(0);
   
