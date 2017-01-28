@@ -19,6 +19,8 @@ use work.tipos.all; -- usa o pakege criado
 entity subBytesCombinacional is
   
 	port(
+	  clock : in std_logic;
+	  reset : in std_logic;
 	  bloco_in  : in Bloco; -- bloco de entrada (a ser cifrado)
     bloco_out : out Bloco -- bloco de saida (ja cifrado)
 	);
@@ -56,13 +58,13 @@ architecture behavior of subBytesCombinacional is
 begin
 
   --bloco para teste(Antes do TESTEBANCH)
-  --blocoIN <= ("01100000","10000001","01001111","11011100",
-    --          "00100010","00101010","10010000","10001000",
-      --        "01000110","11101110","10111000","00010100",
-        --      "11011110","01011110","00001011","11011011");
+  blocoIN <= ("01100000","10000001","01001111","11011100",
+              "00100010","00101010","10010000","10001000",
+              "01000110","11101110","10111000","00010100",
+              "11011110","01011110","00001011","11011011");
   
   --Atribui a entrada ao sinal 
-  blocoIN <= bloco_in;
+  --blocoIN <= bloco_in;
   
   --processo combinacional que efetua a operacao de SUBBYTES do algoritmo AES
   --- saida[X] <= SBOX((16*To_Integer.X[0 to 3]) + To_Integer.X[4 to 7])
@@ -83,7 +85,14 @@ begin
   blocoOUT(14) <= SBOX(to_integer( (cte * unsigned(blocoIN(14)(0 to 3)) ) + unsigned(blocoIN(14)(4 to 7)) ));
   blocoOUT(15) <= SBOX(to_integer( (cte * unsigned(blocoIN(15)(0 to 3)) ) + unsigned(blocoIN(15)(4 to 7)) ));
   
-  --Atribui o sinal com o resultado a saida
-  bloco_out <= blocoOUT;
+  process (clock, reset)
+	begin
+		if (reset = '1') then
+			 bloco_out <= (others =>(others => '0'));
+			elsif (rising_edge(clock)) then
+        bloco_out <= blocoOUT;
+    end if;
+  
+  end process;
   
 end behavior;
