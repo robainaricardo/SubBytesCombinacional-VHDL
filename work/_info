@@ -4,7 +4,7 @@ K3
 cModel Technology
 dC:\designes\memoriaRam
 Esubbytescombinacional
-Z0 w1485617673
+Z0 w1485621806
 Z1 DPx4 work 5 tipos 0 22 KF_VO:mMH5QVcB5dP?cJ>1
 Z2 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
 Z3 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
@@ -15,41 +15,80 @@ Z7 FC:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombina
 l0
 L19
 VSf3=9bY@DhFWX=BM7e>DI2
-!s100 ]^BEHA[2?Yn]]=;4A[9WJ1
 Z8 OV;C;10.1d;51
 32
-!i10b 1
-Z9 !s108 1485617674.438000
+Z9 !s108 1485621808.460000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacional.vhd|
 Z11 !s107 C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacional.vhd|
 Z12 o-work work -2002 -explicit -O0
 Z13 tExplicit 1
+!s100 ]^BEHA[2?Yn]]=;4A[9WJ1
+!i10b 1
 Abehavior
 R1
 R2
 R3
 R4
-Z14 DEx4 work 21 subbytescombinacional 0 22 Sf3=9bY@DhFWX=BM7e>DI2
+DEx4 work 21 subbytescombinacional 0 22 Sf3=9bY@DhFWX=BM7e>DI2
 l58
 L30
-Z15 Va@2k^@<;<A19Q<^>0CYAK3
-Z16 !s100 gkgjVbB8NWFnZ3O0]ObMZ1
+VNo7IU=<9R_Y[fS<NWS3`?3
 R8
 32
-!i10b 1
 R9
 R10
 R11
+R12
+R13
+!s100 NN3a2`]zH<GfWBaU48>R90
+!i10b 1
+Esubbytescombinacionaltb
+Z14 w1485622970
+R1
+R2
+R3
+R4
+R5
+Z15 8C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacionalTB.vhd
+Z16 FC:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacionalTB.vhd
+l0
+L19
+Vemc:d:P[Ec>CoP8NAA_;A2
+!s100 [Z7d;oj_U_@oG=CbZKad10
+R8
+32
+!i10b 1
+Z17 !s108 1485629013.019000
+Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacionalTB.vhd|
+Z19 !s107 C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacionalTB.vhd|
+R12
+R13
+Abehavior
+R1
+R2
+R3
+R4
+Z20 DEx4 work 23 subbytescombinacionaltb 0 22 emc:d:P[Ec>CoP8NAA_;A2
+l39
+L23
+ViB:LY2II7QZL5E7OJf]Rn1
+!s100 I>if50h1RKMa=23]oQJSa2
+R8
+32
+!i10b 1
+R17
+R18
+R19
 R12
 R13
 Ptipos
 R2
 R3
 R4
-Z17 w1485617673
+R14
 R5
-R6
-R7
+R15
+R16
 l0
 L7
 VKF_VO:mMH5QVcB5dP?cJ>1
@@ -57,8 +96,8 @@ VKF_VO:mMH5QVcB5dP?cJ>1
 R8
 32
 !i10b 1
-R9
-R10
-R11
+R17
+R18
+R19
 R12
 R13
