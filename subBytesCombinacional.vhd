@@ -24,13 +24,16 @@ entity subBytesCombinacional is
 	  bloco_in  : in Bloco; -- bloco de entrada (a ser cifrado)
     bloco_out : out Bloco -- bloco de saida (ja cifrado)
 	);
-
+	
 end entity;
 
 architecture behavior of subBytesCombinacional is
   
+  type tipoRam is array (0 to 255) of std_logic_vector (7 downto 0);
+  
+  
   --Tabela SBOX em binário
-  constant SBOX : ByteArray := (
+  signal SBOX : tipoRam := (
   ---     0          1          2         3           4         5         6           7           8         9          A           B          C          D          E          F        
     "01100011","01111100","01110111","01111011","11110010","01101011","01101111","11000101","00110000","00000001","01100111","00101011","11111110","11010111","10101011","01110110",
     "11001010","10000010","11001001","01111101","11111010","01011001","01000111","11110000","10101101","11010100","10100010","10101111","10011100","10100100","01110010","11000000",
@@ -52,20 +55,20 @@ architecture behavior of subBytesCombinacional is
 --declaração dos sinais
   signal blocoIN : Bloco;     --sinal do bloco de entrada
   signal blocoOUT : Bloco;    --sinal do bloco de saida
-  signal cte : unsigned(0 to 4):= "10000";  --sinal CONSTANTE valor 16, numero de colunas da tabela
+  constant cte : unsigned(0 to 4):= "10000";  --sinal CONSTANTE valor 16, numero de colunas da tabela
                                           --utilizado para calcular o endereco do array durante a operacao
 
 begin
 
-  blocoIN <= bloco_in;
+  --blocoIN <= bloco_in;
   --bloco para teste(Antes do TESTEBANCH)
   --blocoIN <= ("01100000","10000001","01001111","11011100",
-    --          "00100010","00101010","10010000","10001000",
-      ---       "01000110","11101110","10111000","00010100",
-         --     "11011110","01011110","00001011","11011011");
+  --           "00100010","00101010","10010000","10001000",
+  --          "01000110","11101110","10111000","00010100",
+  --          "11011110","01011110","00001011","11011011");
   
   --Atribui a entrada ao sinal 
-  --blocoIN <= bloco_in;
+  blocoIN <= bloco_in;
   
   --processo combinacional que efetua a operacao de SUBBYTES do algoritmo AES
   --- saida[X] <= SBOX((16*To_Integer.X[0 to 3]) + To_Integer.X[4 to 7])
@@ -88,11 +91,14 @@ begin
   
   process (clock, reset)
 	begin
-		if (reset = '1') then
-			 bloco_out <= (others =>(others => '0'));
-			elsif (rising_edge(clock)) then
-        bloco_out <= blocoOUT;
-    end if;
+		if (rising_edge(clock)) then
+			if (reset = '1') then
+				bloco_out <= (others =>(others => '0'));
+			else 
+				bloco_out <= blocoOUT;
+			end if;
+		end if;
+ 
   
   end process;
   

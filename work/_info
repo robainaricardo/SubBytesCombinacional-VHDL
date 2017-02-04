@@ -4,7 +4,7 @@ K3
 cModel Technology
 dC:\designes\memoriaRam
 Esubbytescombinacional
-Z0 w1485621806
+Z0 w1486223120
 Z1 DPx4 work 5 tipos 0 22 KF_VO:mMH5QVcB5dP?cJ>1
 Z2 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
 Z3 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
@@ -17,7 +17,7 @@ L19
 VSf3=9bY@DhFWX=BM7e>DI2
 Z8 OV;C;10.1d;51
 32
-Z9 !s108 1485621808.460000
+Z9 !s108 1486223180.729000
 Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacional.vhd|
 Z11 !s107 C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacional.vhd|
 Z12 o-work work -2002 -explicit -O0
@@ -30,9 +30,10 @@ R2
 R3
 R4
 DEx4 work 21 subbytescombinacional 0 22 Sf3=9bY@DhFWX=BM7e>DI2
-l58
+l61
 L30
-VNo7IU=<9R_Y[fS<NWS3`?3
+VYbY`cQ2LcnSQ;:bG[BQ2Z1
+!s100 JFUO1j^2G3m6ZNN^hik=U3
 R8
 32
 R9
@@ -40,17 +41,55 @@ R10
 R11
 R12
 R13
-!s100 NN3a2`]zH<GfWBaU48>R90
 !i10b 1
-Esubbytescombinacionaltb
-Z14 w1485622970
+Esubbytescombinacionalq
+Z14 w1486222640
 R1
 R2
 R3
 R4
 R5
-Z15 8C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacionalTB.vhd
-Z16 FC:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacionalTB.vhd
+R6
+R7
+l0
+L19
+Vzl_0^4`ZH?[XPb507c]XO2
+R8
+32
+Z15 !s108 1486222645.274000
+R10
+R11
+R12
+R13
+!s100 PTJ?6z?;6G97>MRGZO>Ll2
+!i10b 1
+Abehavior
+R1
+R2
+R3
+R4
+DEx4 work 22 subbytescombinacionalq 0 22 zl_0^4`ZH?[XPb507c]XO2
+l61
+L30
+VoWaK5AeL6`Q;IOBzSDmKE0
+R8
+32
+R15
+R10
+R11
+R12
+R13
+!s100 TM;hXORfYb:VIeeOC4e^G1
+!i10b 1
+Esubbytescombinacionaltb
+Z16 w1485622970
+R1
+R2
+R3
+R4
+R5
+Z17 8C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacionalTB.vhd
+Z18 FC:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacionalTB.vhd
 l0
 L19
 Vemc:d:P[Ec>CoP8NAA_;A2
@@ -58,9 +97,9 @@ Vemc:d:P[Ec>CoP8NAA_;A2
 R8
 32
 !i10b 1
-Z17 !s108 1485629013.019000
-Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacionalTB.vhd|
-Z19 !s107 C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacionalTB.vhd|
+Z19 !s108 1486223180.807000
+Z20 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacionalTB.vhd|
+Z21 !s107 C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacionalTB.vhd|
 R12
 R13
 Abehavior
@@ -68,27 +107,27 @@ R1
 R2
 R3
 R4
-Z20 DEx4 work 23 subbytescombinacionaltb 0 22 emc:d:P[Ec>CoP8NAA_;A2
+Z22 DEx4 work 23 subbytescombinacionaltb 0 22 emc:d:P[Ec>CoP8NAA_;A2
 l39
 L23
-ViB:LY2II7QZL5E7OJf]Rn1
-!s100 I>if50h1RKMa=23]oQJSa2
+Z23 ViB:LY2II7QZL5E7OJf]Rn1
+Z24 !s100 I>if50h1RKMa=23]oQJSa2
 R8
 32
 !i10b 1
-R17
-R18
 R19
+R20
+R21
 R12
 R13
 Ptipos
 R2
 R3
 R4
-R14
-R5
-R15
 R16
+R5
+R17
+R18
 l0
 L7
 VKF_VO:mMH5QVcB5dP?cJ>1
@@ -96,8 +135,8 @@ VKF_VO:mMH5QVcB5dP?cJ>1
 R8
 32
 !i10b 1
-R17
-R18
 R19
+R20
+R21
 R12
 R13
