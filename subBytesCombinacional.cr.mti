@@ -10,4 +10,15 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling architecture behavior of subBytesCombinacionalTB
 ** Warning: [4] C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacionalTB.vhd(45): (vcom-1207) An abstract literal and an identifier must have a separator between them.
 
+} {} {}} C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacional.vhd {1 {vcom -work work -2002 -explicit C:/designes/subBytesCombinacional/SubBytesCombinacional-VHDL/subBytesCombinacional.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling package tipos
+-- Loading package tipos
+-- Compiling entity subBytesCombinacional
+-- Compiling architecture behavior of subBytesCombinacional
+
 } {} {}}
