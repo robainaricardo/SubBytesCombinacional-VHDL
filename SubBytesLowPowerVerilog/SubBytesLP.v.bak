@@ -289,8 +289,7 @@ module SubBytesLP ( input clock, input reset, input enable, input [0:127]blocoIn
 
 	//blocoOUT(0) <= SBOX(to_integer( (cte * unsigned(blocoIN(0)(0 to 3)) ) + unsigned(blocoIN(0)(4 to 7)) ));
 	
-	//aparentemente soh o shift que nao esta funcionando
-  assign out[0] = sBox[((in[0][0:3])<<4)+(in[0][4:7])];
+  assign out[0] = sBox[(in[0][0:3]<<4)+(in[0][4:7])];
 
     //colcoar um and em cada entra com o in and enable para travar quando o enable estiver desabilitado
     //como sempre multiplica por 16 seria melhor colocar um shift?
