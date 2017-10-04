@@ -1,7 +1,7 @@
 //subBites clock gating verilog
 //www.crimsoneditor.com
 
-module SubBytesLP ( input clock, input reset, input enable, input [0:127]blocoIn, output [0:127]blocoOut);
+module SubBytesLP ( input clock, input reset, input enable, input [0:127]blocoIn, output reg [0:127]blocoOut);
 	
 	//decalrando sinais de cada bite separado
 	wire [0:7] in [0:15];
@@ -9,21 +9,42 @@ module SubBytesLP ( input clock, input reset, input enable, input [0:127]blocoIn
 	
 	//Ligando o blocoIn nos respecitvos bytes do in
 	assign in[0] = blocoIn[0:7];
-  assign in[1] = blocoIn[8:15];
-  assign in[2] = blocoIn[16:23];
-  assign in[3] = blocoIn[24:31];
-  assign in[4] = blocoIn[32:39];
-  assign in[5] = blocoIn[40:47];
-  assign in[6] = blocoIn[48:55];
-  assign in[7] = blocoIn[56:63];
-  assign in[8] = blocoIn[64:71];
-  assign in[9] = blocoIn[72:79];
-  assign in[10] = blocoIn[80:87];
-  assign in[11] = blocoIn[88:95];
-  assign in[12] = blocoIn[96:103];
-  assign in[13] = blocoIn[104:111];
-  assign in[14] = blocoIn[112:119];
-  assign in[15] = blocoIn[120:127];	
+	assign in[1] = blocoIn[8:15];
+	assign in[2] = blocoIn[16:23];
+	assign in[3] = blocoIn[24:31];
+	assign in[4] = blocoIn[32:39];
+	assign in[5] = blocoIn[40:47];
+	assign in[6] = blocoIn[48:55];
+	assign in[7] = blocoIn[56:63];
+	assign in[8] = blocoIn[64:71];
+	assign in[9] = blocoIn[72:79];
+	assign in[10] = blocoIn[80:87];
+	assign in[11] = blocoIn[88:95];
+	assign in[12] = blocoIn[96:103];
+	assign in[13] = blocoIn[104:111];
+	assign in[14] = blocoIn[112:119];
+	assign in[15] = blocoIn[120:127];	
+	
+	
+	//------------So PARA VALIDAR O COMPONENTE ANTES DE FAZER O TESTBENCH
+	assign in[0] = 8'b01100000;
+	assign in[1] = 8'b10000001;
+	assign in[2] = 8'b01001111;
+	assign in[3] = 8'b11011100;
+	assign in[4] = 8'b00100010;
+	assign in[5] = 8'b00101010;
+	assign in[6] = 8'b10010000;
+	assign in[7] = 8'b10001000;
+	assign in[8] = 8'b01000110;
+	assign in[9] = 8'b11101110;
+	assign in[10] = 8'b10111000;
+	assign in[11] = 8'b00010100;
+	assign in[12] = 8'b11011110;
+	assign in[13] = 8'b01011110;
+	assign in[14] = 8'b00001011;
+	assign in[15] = 8'b11011011;
+	//-------------
+	
 	
 	//Declaracao da Sbox como ROM
 	wire  [0:7] sBox [0:255];
@@ -289,8 +310,49 @@ module SubBytesLP ( input clock, input reset, input enable, input [0:127]blocoIn
 
 	//blocoOUT(0) <= SBOX(to_integer( (cte * unsigned(blocoIN(0)(0 to 3)) ) + unsigned(blocoIN(0)(4 to 7)) ));
 	
-  assign out[0] = sBox[(in[0][0:3]<<4)+(in[0][4:7])];
+	
+	
+	//aparentemente soh o shift que nao esta funcionando
+	
 
+	assign out[0] = sBox[({4'b0000,(in[0][0:3])}<<4) + (in[0][4:7])];//FuncionandoS
+	assign out[1] = sBox[({4'b0000,(in[1][0:3])}<<4)+(in[1][4:7])];
+	assign out[2] = sBox[({4'b0000,(in[2][0:3])}<<4)+(in[2][4:7])];
+	assign out[3] = sBox[({4'b0000,(in[3][0:3])}<<4)+(in[3][4:7])];
+	assign out[4] = sBox[({4'b0000,(in[4][0:3])}<<4)+(in[4][4:7])];
+	assign out[5] = sBox[({4'b0000,(in[5][0:3])}<<4)+(in[5][4:7])];
+	assign out[6] = sBox[({4'b0000,(in[6][0:3])}<<4)+(in[6][4:7])];
+	assign out[7] = sBox[({4'b0000,(in[7][0:3])}<<4)+(in[7][4:7])];
+	assign out[8] = sBox[({4'b0000,(in[8][0:3])}<<4)+(in[8][4:7])];
+	assign out[9] = sBox[({4'b0000,(in[9][0:3])}<<4)+(in[9][4:7])];
+	assign out[10] = sBox[({4'b0000,(in[10][0:3])}<<4)+(in[10][4:7])];
+	assign out[11] = sBox[({4'b0000,(in[11][0:3])}<<4)+(in[11][4:7])];
+	assign out[12] = sBox[({4'b0000,(in[12][0:3])}<<4)+(in[12][4:7])];
+	assign out[13] = sBox[({4'b0000,(in[13][0:3])}<<4)+(in[13][4:7])];
+	assign out[14] = sBox[({4'b0000,(in[14][0:3])}<<4)+(in[14][4:7])];
+	assign out[15] = sBox[({4'b0000,(in[15][0:3])}<<4)+(in[15][4:7])];
+	
+	
+	//DUVIDAS
+		/*
+			SHIFT
+			PARTE SEQUENCIAL
+			OPERAND ISOLATION
+		*/
+	
+	
+	
+	
+	always @(posedge clock, posedge reset)
+	begin
+		if (reset)
+			//ZERAR A SAIDA
+			blocoOut[0:7] <= 8'b00000000;
+		else
+			//PASSAR O OUT PARA O BLOCO OUT
+			blocoOut[0:7] <= out[0];
+		end
+	
     //colcoar um and em cada entra com o in and enable para travar quando o enable estiver desabilitado
     //como sempre multiplica por 16 seria melhor colocar um shift?
 endmodule // final do módulo AND
