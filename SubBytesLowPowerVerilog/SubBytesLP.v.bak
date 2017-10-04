@@ -347,10 +347,26 @@ module SubBytesLP ( input clock, input reset, input enable, input [0:127]blocoIn
 	begin
 		if (reset)
 			//ZERAR A SAIDA
-			blocoOut[0:7] <= 8'b00000000;
+			blocoOut[0:127]      <= 128'd0;
+	    
 		else
 			//PASSAR O OUT PARA O BLOCO OUT
-			blocoOut[0:7] <= out[0];
+			blocoOut[0:7]      <= out[0];
+	    blocoOut[8:15]     <= out[1];
+	    blocoOut[16:23]    <= out[2];
+	    blocoOut[24:31]    <= out[3];
+	    blocoOut[32:39]    <= out[4];
+	    blocoOut[40:47]    <= out[5];
+	    blocoOut[48:55]    <= out[6];
+	    blocoOut[56:63]    <= out[7];
+	    blocoOut[64:71]    <= out[8];
+      blocoOut[72:79]    <= out[9];
+	    blocoOut[80:87]    <= out[10];
+	    blocoOut[88:95]    <= out[11];
+	    blocoOut[96:103]   <= out[12];
+	    blocoOut[104:111]  <= out[13];
+	    blocoOut[112:119]  <= out[14];
+	    blocoOut[120:127]  <= out[15];	
 		end
 	
     //colcoar um and em cada entra com o in and enable para travar quando o enable estiver desabilitado
