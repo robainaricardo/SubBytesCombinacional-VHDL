@@ -1,0 +1,119 @@
+module SubBytesLP_TB;
+	reg clockTB;
+	reg resetTB;
+	reg enableTB; 
+	reg [0:127]blocoInTB; 
+	wire [0:127]blocoOutTB;
+	
+	
+	SubBytesLP instanciaSubBytes(
+		.clock (clockTB),
+		.reset (resetTB),
+		.enable (enableTB),
+		.blocoIn (blocoInTB),
+		.blocoOut (blocoOutTB)
+	);
+	
+	initial
+	begin
+		clockTB = 0;
+		resetTB = 1;
+		enableTB = 1;
+		#5 
+		resetTB = 0;
+		enableTB = 0;
+		
+		#32 //Exp chave
+		blocoInTB[0:7] = 8'h32;
+		blocoInTB[8:15] = 8'h88;
+		blocoInTB[16:23] = 8'h31;
+		blocoInTB[24:31] = 8'hE0;
+		blocoInTB[32:39] = 8'h43;
+		blocoInTB[40:47] = 8'h5A;
+		blocoInTB[48:55] = 8'h31;
+		blocoInTB[56:63] = 8'h37;
+		blocoInTB[64:71] = 8'hF6;
+		blocoInTB[72:79] = 8'h30;
+		blocoInTB[80:87] = 8'h98;
+		blocoInTB[88:95] = 8'h07;
+		blocoInTB[96:103] = 8'hA8;
+		blocoInTB[104:111] = 8'h8D;
+		blocoInTB[112:119] = 8'hA2;
+		blocoInTB[120:127] = 8'h34;
+		
+		#18 //Add Round Key	
+		blocoInTB[0:7] = 8'h19;
+		blocoInTB[8:15] = 8'hA0;
+		blocoInTB[16:23] = 8'h9A;
+		blocoInTB[24:31] = 8'hE9;
+		blocoInTB[32:39] = 8'h3D;
+		blocoInTB[40:47] = 8'hF4;
+		blocoInTB[48:55] = 8'hC6;
+		blocoInTB[56:63] = 8'hF8;
+		blocoInTB[64:71] = 8'hE3;
+		blocoInTB[72:79] = 8'hE2;
+		blocoInTB[80:87] = 8'h8D;
+		blocoInTB[88:95] = 8'h48;
+		blocoInTB[96:103] = 8'hBE;
+		blocoInTB[104:111] = 8'h2B;
+		blocoInTB[112:119] = 8'h2A;
+		blocoInTB[120:127] = 8'h08;
+		
+		//SUB
+		enableTB = 1;
+		#1
+		
+		/*Resultado deve ser
+		blocoInTB[0:7] = blocoOutTB[0:7];
+		blocoInTB[8:15] = blocoOutTB[8:15];
+		blocoInTB[16:23] = blocoOutTB[16:23];
+		blocoInTB[24:31] = blocoOutTB[24:31];
+		blocoInTB[32:39] = blocoOutTB[32:39];
+		blocoInTB[40:47] = blocoOutTB[40:47];
+		blocoInTB[48:55] = blocoOutTB[48:55];
+		blocoInTB[56:63] = blocoOutTB[56:63];
+		blocoInTB[64:71] = blocoOutTB[64:71];
+		blocoInTB[72:79] = blocoOutTB[72:79];
+		blocoInTB[80:87] = blocoOutTB[80:87];
+		blocoInTB[88:95] = blocoOutTB[88:95];
+		blocoInTB[96:103] = blocoOutTB[96:103];
+		blocoInTB[104:111] = blocoOutTB[104:111];
+		blocoInTB[112:119] = blocoOutTB[112:119];
+		blocoInTB[120:127] = blocoOutTB[120:127];
+		
+		
+			D4 E0 B8 1E
+			27 BF B4 41
+			11 98 5D 52
+			Ae F1 E5 30
+		*/
+		
+		/*
+		#10
+		blocoInTB[0:7] = 8'b11111111;
+		blocoInTB[8:15] = 8'b11111111;
+		blocoInTB[16:23] = 8'b11111111;
+		blocoInTB[24:31] = 8'b11111111;
+		blocoInTB[32:39] = 8'b11111111;
+		blocoInTB[40:47] = 8'b11111111;
+		blocoInTB[48:55] = 8'b11111111;
+		blocoInTB[56:63] = 8'b11111111;
+		blocoInTB[64:71] = 8'b11111111;
+		blocoInTB[72:79] = 8'b11111111;
+		blocoInTB[80:87] = 8'b11111111;
+		blocoInTB[88:95] = 8'b11111111;
+		blocoInTB[96:103] = 8'b11111111;
+		blocoInTB[104:111] = 8'b11111111;
+		blocoInTB[112:119] = 8'b11111111;
+		blocoInTB[120:127] = 8'b11111111;
+		#20
+		enableTB = 1; 
+		*/
+	//-------------
+	
+	end
+	
+	always
+		#1 clockTB =~clockTB;
+		
+endmodule

@@ -1,49 +1,32 @@
 //subBites clock gating verilog
 //www.crimsoneditor.com
 
-module SubBytesLP ( input clock, input reset, input enable, input [0:127]blocoIn, output reg [0:127]blocoOut);
+module SubBytesLP ( input clock, input reset, input enableS, input [0:127]blocoIn, output reg [0:127]blocoOut);
 	
 	//decalrando sinais de cada bite separado
 	wire [0:7] in [0:15];
 	wire [0:7] out [0:15];
+	wire [0:7] enable ;
+	
+	assign enable = {enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS};
 	
 	//Ligando o blocoIn nos respecitvos bytes do in
-	assign in[0] = blocoIn[0:7];
-	assign in[1] = blocoIn[8:15];
-	assign in[2] = blocoIn[16:23];
-	assign in[3] = blocoIn[24:31];
-	assign in[4] = blocoIn[32:39];
-	assign in[5] = blocoIn[40:47];
-	assign in[6] = blocoIn[48:55];
-	assign in[7] = blocoIn[56:63];
-	assign in[8] = blocoIn[64:71];
-	assign in[9] = blocoIn[72:79];
-	assign in[10] = blocoIn[80:87];
-	assign in[11] = blocoIn[88:95];
-	assign in[12] = blocoIn[96:103];
-	assign in[13] = blocoIn[104:111];
-	assign in[14] = blocoIn[112:119];
-	assign in[15] = blocoIn[120:127];	
-	
-	
-	//------------So PARA VALIDAR O COMPONENTE ANTES DE FAZER O TESTBENCH
-	assign in[0] = 8'b01100000;
-	assign in[1] = 8'b10000001;
-	assign in[2] = 8'b01001111;
-	assign in[3] = 8'b11011100;
-	assign in[4] = 8'b00100010;
-	assign in[5] = 8'b00101010;
-	assign in[6] = 8'b10010000;
-	assign in[7] = 8'b10001000;
-	assign in[8] = 8'b01000110;
-	assign in[9] = 8'b11101110;
-	assign in[10] = 8'b10111000;
-	assign in[11] = 8'b00010100;
-	assign in[12] = 8'b11011110;
-	assign in[13] = 8'b01011110;
-	assign in[14] = 8'b00001011;
-	assign in[15] = 8'b11011011;
-	//-------------
+	assign in[0] = (blocoIn[0:7] & enable);
+	assign in[1] = (blocoIn[8:15] & enable);
+	assign in[2] = (blocoIn[16:23] & enable);
+	assign in[3] = (blocoIn[24:31] & enable);
+	assign in[4] = (blocoIn[32:39] & enable);
+	assign in[5] = (blocoIn[40:47] & enable);
+	assign in[6] = (blocoIn[48:55] & enable);
+	assign in[7] = (blocoIn[56:63] & enable);
+	assign in[8] = (blocoIn[64:71] & enable);
+	assign in[9] = (blocoIn[72:79] & enable);
+	assign in[10] = (blocoIn[80:87] & enable);
+	assign in[11] = (blocoIn[88:95] & enable);
+	assign in[12] = (blocoIn[96:103] & enable);
+	assign in[13] = (blocoIn[104:111] & enable);
+	assign in[14] = (blocoIn[112:119] & enable);
+	assign in[15] = (blocoIn[120:127] & enable);	
 	
 	
 	//Declaracao da Sbox como ROM
@@ -307,12 +290,6 @@ module SubBytesLP ( input clock, input reset, input enable, input [0:127]blocoIn
 	assign sBox[254] = 8'b10111011;
 	assign sBox[255] = 8'b00010110;
 
-
-	//blocoOUT(0) <= SBOX(to_integer( (cte * unsigned(blocoIN(0)(0 to 3)) ) + unsigned(blocoIN(0)(4 to 7)) ));
-	
-	
-	
-	//aparentemente soh o shift que nao esta funcionando
 	
 
 	assign out[0] = sBox[({4'b0000,(in[0][0:3])}<<4) + (in[0][4:7])];//FuncionandoS
@@ -333,40 +310,49 @@ module SubBytesLP ( input clock, input reset, input enable, input [0:127]blocoIn
 	assign out[15] = sBox[({4'b0000,(in[15][0:3])}<<4)+(in[15][4:7])];
 	
 	
-	//DUVIDAS
-		/*
-			SHIFT
-			PARTE SEQUENCIAL
-			OPERAND ISOLATION
-		*/
-	
-	
-	
-	
 	always @(posedge clock, posedge reset)
 	begin
-		if (reset)
+		if (reset) begin
 			//ZERAR A SAIDA
-			blocoOut[0:127] <= 128'd0;//verificar ta zerando so o primeiro byte
-	    
+			
+			blocoOut[0:7] 	   <= 8'b00000000;
+			blocoOut[8:15]     <= 8'b00000000;
+			blocoOut[16:23]    <= 8'b00000000;
+			blocoOut[24:31]    <= 8'b00000000;
+			blocoOut[32:39]    <= 8'b00000000;
+			blocoOut[40:47]    <= 8'b00000000;
+			blocoOut[48:55]    <= 8'b00000000;
+			blocoOut[56:63]    <= 8'b00000000;
+			blocoOut[64:71]    <= 8'b00000000;
+			blocoOut[72:79]    <= 8'b00000000;
+			blocoOut[80:87]    <= 8'b00000000;
+			blocoOut[88:95]    <= 8'b00000000;
+			blocoOut[96:103]   <= 8'b00000000;
+			blocoOut[104:111]  <= 8'b00000000;
+			blocoOut[112:119]  <= 8'b00000000;
+			blocoOut[120:127]  <= 8'b00000000;		
+		
+		end
 		else
+			if (enable) begin
 			//PASSAR O OUT PARA O BLOCO OUT
 			blocoOut[0:7]      <= out[0];
-	    blocoOut[8:15]     <= out[1];
-	    blocoOut[16:23]    <= out[2];
-	    blocoOut[24:31]    <= out[3];
-	    blocoOut[32:39]    <= out[4];
-	    blocoOut[40:47]    <= out[5];
-	    blocoOut[48:55]    <= out[6];
-	    blocoOut[56:63]    <= out[7];
-	    blocoOut[64:71]    <= out[8];
-      blocoOut[72:79]    <= out[9];
-	    blocoOut[80:87]    <= out[10];
-	    blocoOut[88:95]    <= out[11];
-	    blocoOut[96:103]   <= out[12];
-	    blocoOut[104:111]  <= out[13];
-	    blocoOut[112:119]  <= out[14];
-	    blocoOut[120:127]  <= out[15];	
+			blocoOut[8:15]     <= out[1];
+			blocoOut[16:23]    <= out[2];
+			blocoOut[24:31]    <= out[3];
+			blocoOut[32:39]    <= out[4];
+			blocoOut[40:47]    <= out[5];
+			blocoOut[48:55]    <= out[6];
+			blocoOut[56:63]    <= out[7];
+			blocoOut[64:71]    <= out[8];
+			blocoOut[72:79]    <= out[9];
+			blocoOut[80:87]    <= out[10];
+			blocoOut[88:95]    <= out[11];
+			blocoOut[96:103]   <= out[12];
+			blocoOut[104:111]  <= out[13];
+			blocoOut[112:119]  <= out[14];
+			blocoOut[120:127]  <= out[15];	
+			end
 		end
 	
     //colcoar um and em cada entra com o in and enable para travar quando o enable estiver desabilitado
