@@ -1,11 +1,4 @@
-D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytesLP_TB.v {1 {vlog -work work {D:\Projetos\Git\SubBytesCombinacional-VHDL\SubBytesLowPowerVerilog\SubBytesLP_TB.v}
-Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
--- Compiling module SubBytesLP_TB
-
-Top level modules:
-	SubBytesLP_TB
-
-} {} {}} D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytesLP.v {1 {vlog -work work D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytesLP.v
+D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytesLP.v {1 {vlog -work work D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytesLP.v
 Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
 -- Compiling module SubBytesLP
 

@@ -1,16 +1,19 @@
-//subBites clock gating verilog
-//www.crimsoneditor.com
+//Modulo em hardware da etapa SubBytes, algoritmo de criptografia AES.
+//Autor: Ricardo Robaina 2017
+//Linguagem: Verilog
 
 module SubBytesLP ( input clock, input reset, input enableS, input [0:127]blocoIn, output reg [0:127]blocoOut);
 	
 	//decalrando sinais de cada bite separado
-	wire [0:7] in [0:15];
-	wire [0:7] out [0:15];
-	wire [0:7] enable ;
+	wire [0:7] in [0:15]; //sinal que separa cada byte da matriz apartir da entrada
+	wire [0:7] out [0:15];//sinal que será atribuido, em cada byte, a saida da operação SubBytes. 
+	wire [0:7] enable; //Sinal Enable que precisará ser replicado
 	
+	//Expandindo o enable para 8 bits para poder fazer o OrandIsolation
 	assign enable = {enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS,enableS};
 	
 	//Ligando o blocoIn nos respecitvos bytes do in
+	//O and com o aneble é o OperandIsolation
 	assign in[0] = (blocoIn[0:7] & enable);
 	assign in[1] = (blocoIn[8:15] & enable);
 	assign in[2] = (blocoIn[16:23] & enable);
@@ -289,10 +292,9 @@ module SubBytesLP ( input clock, input reset, input enableS, input [0:127]blocoI
 	assign sBox[253] = 8'b01010100;
 	assign sBox[254] = 8'b10111011;
 	assign sBox[255] = 8'b00010110;
-
 	
-
-	assign out[0] = sBox[({4'b0000,(in[0][0:3])}<<4) + (in[0][4:7])];//FuncionandoS
+	//Operação do SubBytes
+	assign out[0] = sBox[({4'b0000,(in[0][0:3])}<<4)+(in[0][4:7])];
 	assign out[1] = sBox[({4'b0000,(in[1][0:3])}<<4)+(in[1][4:7])];
 	assign out[2] = sBox[({4'b0000,(in[2][0:3])}<<4)+(in[2][4:7])];
 	assign out[3] = sBox[({4'b0000,(in[3][0:3])}<<4)+(in[3][4:7])];
@@ -314,7 +316,6 @@ module SubBytesLP ( input clock, input reset, input enableS, input [0:127]blocoI
 	begin
 		if (reset) begin
 			//ZERAR A SAIDA
-			
 			blocoOut[0:7] 	   <= 8'b00000000;
 			blocoOut[8:15]     <= 8'b00000000;
 			blocoOut[16:23]    <= 8'b00000000;
@@ -331,11 +332,10 @@ module SubBytesLP ( input clock, input reset, input enableS, input [0:127]blocoI
 			blocoOut[104:111]  <= 8'b00000000;
 			blocoOut[112:119]  <= 8'b00000000;
 			blocoOut[120:127]  <= 8'b00000000;		
-		
 		end
 		else
 			if (enable) begin
-			//PASSAR O OUT PARA O BLOCO OUT
+			//PASSA O OUT PARA O BLOCO OUT
 			blocoOut[0:7]      <= out[0];
 			blocoOut[8:15]     <= out[1];
 			blocoOut[16:23]    <= out[2];
@@ -354,7 +354,5 @@ module SubBytesLP ( input clock, input reset, input enableS, input [0:127]blocoI
 			blocoOut[120:127]  <= out[15];	
 			end
 		end
-	
-    //colcoar um and em cada entra com o in and enable para travar quando o enable estiver desabilitado
-    //como sempre multiplica por 16 seria melhor colocar um shift?
-endmodule // final do módulo AND
+
+endmodule 

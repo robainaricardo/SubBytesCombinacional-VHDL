@@ -158,8 +158,6 @@ module SubBytesLP_TB;
 			28 D7 07 94
 			
 			52 85 e3 f6 50 a4 11 cf 2f 5e c8 6a 28 d7 07 94
-			
-			
 		*/
 		#1
 		enableTB = 1;
