@@ -3,43 +3,83 @@ K3
 13
 cModel Technology
 Z0 dC:\altera\13.1
-vSubBytesLP
-Z1 Ie10VQ>1Gl@R;jS2jj59M83
-Z2 V127o2Z[kk<e>2B;D2V@[C0
-Z3 dD:\Projetos\Git\SubBytesCombinacional-VHDL\SubBytesLowPowerVerilog
-Z4 w1508260328
-Z5 8D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytesLP.v
-Z6 FD:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytesLP.v
+vSubBytes
+Z1 !s100 IBQ4CR@QCl^T0<R8gM3mg2
+Z2 Ihn9CU@;>zf[adAZmgHPON0
+Z3 V4dZLXoB4BRCHfZM>51J0_1
+Z4 dD:\Projetos\Git\SubBytesCombinacional-VHDL\SubBytesLowPowerVerilog
+Z5 w1508446407
+Z6 8D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytes.v
+Z7 FD:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytes.v
 L0 5
-Z7 OV;L;10.1d;51
+Z8 OV;L;10.1d;51
 r1
 31
-Z8 !s90 -reportprogress|300|-work|work|D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytesLP.v|
-Z9 o-work work -O0
-Z10 n@sub@bytes@l@p
+Z9 !s90 -reportprogress|300|-work|work|D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytes.v|
+Z10 o-work work -O0
+Z11 n@sub@bytes
 !i10b 1
-Z11 !s100 ?z0B3fC_VfHhjlfjmA=lf2
 !s85 0
-Z12 !s108 1508261355.890000
-Z13 !s107 D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytesLP.v|
+Z12 !s108 1508446651.166000
+Z13 !s107 D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytes.v|
+!s101 -O0
+vSubBytes_TB
+!i10b 1
+!s100 L]aoPoJT=Z@2<:Cm9RbNo0
+I0Z5QL9d3`5;h`RAf`35JP1
+Vn[iC2TCbJ:;fed=<0f_BG2
+R4
+w1508446647
+8D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytes_TB.v
+FD:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytes_TB.v
+L0 1
+R8
+r1
+!s85 0
+31
+!s108 1508446651.369000
+!s107 D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytes_TB.v|
+!s90 -reportprogress|300|-work|work|D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytes_TB.v|
+!s101 -O0
+R10
+n@sub@bytes_@t@b
+vSubBytesLP
+Z14 !s100 ?z0B3fC_VfHhjlfjmA=lf2
+Z15 Ie10VQ>1Gl@R;jS2jj59M83
+Z16 V127o2Z[kk<e>2B;D2V@[C0
+R4
+Z17 w1508260328
+Z18 8D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytesLP.v
+Z19 FD:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytesLP.v
+L0 5
+R8
+r1
+31
+Z20 !s90 -reportprogress|300|-work|work|D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytesLP.v|
+R10
+Z21 n@sub@bytes@l@p
+Z22 !s108 1508446649.854000
+Z23 !s107 D:/Projetos/Git/SubBytesCombinacional-VHDL/SubBytesLowPowerVerilog/SubBytesLP.v|
+!i10b 1
+!s85 0
 !s101 -O0
 vSubBytesLP_TB
-!i10b 1
-Z14 !s100 QH[V:<bF^<@c4cjK0oOn01
-Z15 Ihzdgij9nPA@IZ5<?=2@E23
-Z16 VYW@=SJ7C<^1LnNj_Z;A313
-R3
-w1507767704
-Z17 8D:\Projetos\Git\SubBytesCombinacional-VHDL\SubBytesLowPowerVerilog\SubBytesLP_TB.v
-Z18 FD:\Projetos\Git\SubBytesCombinacional-VHDL\SubBytesLowPowerVerilog\SubBytesLP_TB.v
+Z24 Ia[]GD3HhFj7O9o7<VOjjW1
+Z25 VYW@=SJ7C<^1LnNj_Z;A313
+R4
+Z26 w1508262465
+Z27 8D:\Projetos\Git\SubBytesCombinacional-VHDL\SubBytesLowPowerVerilog\SubBytesLP_TB.v
+Z28 FD:\Projetos\Git\SubBytesCombinacional-VHDL\SubBytesLowPowerVerilog\SubBytesLP_TB.v
 L0 1
-R7
+R8
 r1
-!s85 0
 31
-!s108 1508261356.577000
-!s107 D:\Projetos\Git\SubBytesCombinacional-VHDL\SubBytesLowPowerVerilog\SubBytesLP_TB.v|
-Z19 !s90 -reportprogress|300|-work|work|D:\Projetos\Git\SubBytesCombinacional-VHDL\SubBytesLowPowerVerilog\SubBytesLP_TB.v|
+R10
+Z29 n@sub@bytes@l@p_@t@b
+Z30 !s100 0_G0BDM0lVHdG^]I[e8E=0
+Z31 !s108 1508446650.916000
+Z32 !s107 D:\Projetos\Git\SubBytesCombinacional-VHDL\SubBytesLowPowerVerilog\SubBytesLP_TB.v|
+Z33 !s90 -reportprogress|300|-work|work|D:\Projetos\Git\SubBytesCombinacional-VHDL\SubBytesLowPowerVerilog\SubBytesLP_TB.v|
+!i10b 1
+!s85 0
 !s101 -O0
-R9
-Z20 n@sub@bytes@l@p_@t@b
